@@ -3,8 +3,6 @@ package com.company;
 import com.company.java.Persona;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.Random;
 
 public class Main {
 
@@ -17,12 +15,35 @@ public class Main {
 
         Persona persona1 = new Persona(nombre, edad, sexo, peso, altura);
         Persona persona2 = new Persona(nombre, edad, sexo);
+        persona2.setAltura(1.75);
+        persona2.setPeso(75);
         Persona persona3 = new Persona();
-        persona3.setNombre(nombre);
-        persona3.setEdad(edad);
-        persona3.setSxo(sexo);
-        persona3.setPeso(peso);
-        persona3.setAltura(altura);
+        persona3.setNombre("Carlos");
+        persona3.setEdad(25);
+        persona3.setSxo("H");
+        persona3.setPeso(85.5);
+        persona3.setAltura(1.78);
+
+
+        System.out.println("Nombre: "+persona1.getNombre());
+        System.out.println("Dni: "+persona1.getDni());
+        System.out.println("Edad: "+persona1.getEdad());
+        System.out.println("Sexo: "+persona1.getSexo());
+        System.out.println(persona1.comprobarPesoIdeal());
+        System.out.println(persona1.esMayorDeEdad());
+        System.out.println("Nombre: "+persona2.getNombre());
+        System.out.println("Dni: "+persona2.getDni());
+        System.out.println("Edad: "+persona2.getEdad());
+        System.out.println("Sexo: "+persona2.getSexo());
+        System.out.println(persona2.comprobarPesoIdeal());
+        System.out.println(persona2.esMayorDeEdad());
+        System.out.println("Nombre: "+persona3.getNombre());
+        System.out.println("Dni: "+persona3.getDni());
+        System.out.println("Edad: "+persona3.getEdad());
+        System.out.println("Sexo: "+persona3.getSexo());
+        System.out.println(persona3.comprobarPesoIdeal());
+        System.out.println(persona3.esMayorDeEdad());
+
 
 
     }

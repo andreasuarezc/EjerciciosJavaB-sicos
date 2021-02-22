@@ -5,7 +5,7 @@ import java.util.Random;
 public class Persona {
     private String nombre = "";
     private int edad = 0;
-    private int dni;
+    private int dni = generarDNI();
     private String sexo;
     private double peso = 0;
     private double altura = 0;
@@ -22,10 +22,33 @@ public class Persona {
     public Persona(String nombre, int edad, String sexo, double peso, double altura) {
         this.nombre = nombre;
         this.edad = edad;
-        this.dni = generarDNI();
         this.sexo = comprobarSexo(sexo);
         this.peso = peso;
         this.altura = altura;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public double getAltura() {
+        return altura;
     }
 
     public void setNombre(String nombre) {
@@ -50,27 +73,29 @@ public class Persona {
 
     public int calcularIMC() {
         double formula = peso / (Math.pow(altura, 2));
-        int x = 0;
         if (formula < 20) {
-            x = -1;
+            return -1;
         } else if (formula <= 25) {
-            x = 0;
-        } else if (formula > 25) {
-            x = 1;
-        }
-        return x;
+            return 0;
+        }return 1;
     }
 
-    public boolean esMayorDeEdad() {
+    public String  comprobarPesoIdeal(){
+        if(calcularIMC()==1) return nombre +" tiene sobrepeso";
+        if(calcularIMC()==0) return nombre + " está por debajo de su peso ideal";
+        return nombre + " tiene un peso saludable";
+    }
+
+    public String esMayorDeEdad() {
         if (altura > 17) {
-            return true;
+            return nombre + " es mayor de edad";
         } else {
-            return false;
+            return nombre + " es menor de edad";
         }
     }
 
     public String comprobarSexo(String sexo) {
-        if (sexo == "H" || sexo == "M") {
+        if (sexo.equals("H") || sexo.equals("M")) {
             return sexo;
         } else {
             return "H";
@@ -91,8 +116,7 @@ public class Persona {
     }
 
     public int generarDNI() {
-        Random numeroAleatorio = new Random();
-        int x = numeroAleatorio.nextInt(99999999 - 10000000 + 1) + 10000000;
-        return x;
+        Random rand = new Random();
+        return rand.nextInt(99999999 - 10000000 + 1) + 10000000;
     }
 }
