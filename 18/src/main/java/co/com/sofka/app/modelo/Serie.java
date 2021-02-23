@@ -4,7 +4,7 @@ public class Serie implements Entregable{
     private String título;
     private int numeroTemporadas = 3;
     private boolean entregado = false;
-    private char género;
+    private String género = "Cultura General";
     private String creador;
 
     public Serie() {
@@ -15,7 +15,7 @@ public class Serie implements Entregable{
         this.creador = creador;
     }
 
-    public Serie(String título, int numeroTemporadas, char género, String creador) {
+    public Serie(String título, int numeroTemporadas, String género, String creador) {
         this.título = título;
         this.numeroTemporadas = numeroTemporadas;
         this.género = género;
@@ -38,11 +38,11 @@ public class Serie implements Entregable{
         this.numeroTemporadas = numeroTemporadas;
     }
 
-    public char getGénero() {
+    public String getGénero() {
         return género;
     }
 
-    public void setGénero(char género) {
+    public void setGénero(String género) {
         this.género = género;
     }
 
@@ -81,8 +81,16 @@ public class Serie implements Entregable{
     }
 
     @Override
-    public void compareTo(Object a) {
-
+    public int compareTo(Object a) {
+        int resultado = 0;
+        if(a instanceof Serie){
+            Serie objeto = (Serie) a;
+            resultado = Integer.compare(numeroTemporadas, objeto.numeroTemporadas);
+            //-1 objeto es mayor
+            //0 ambos son iguales
+            //1 objeto es menor
+        }
+        return resultado;
     }
 }
 

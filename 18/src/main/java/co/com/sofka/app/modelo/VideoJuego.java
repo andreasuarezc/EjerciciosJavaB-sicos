@@ -4,7 +4,7 @@ public class VideoJuego implements Entregable{
     private String titulo;
     private int horasestimadas = 10;
     private boolean entregado = false;
-    private char genero;
+    private String genero;
     private String compañia;
 
     public VideoJuego() {
@@ -15,7 +15,7 @@ public class VideoJuego implements Entregable{
         this.horasestimadas = horasestimadas;
     }
 
-    public VideoJuego(String titulo, int horasestimadas, char genero, String compañia) {
+    public VideoJuego(String titulo, int horasestimadas, String genero, String compañia) {
         this.titulo = titulo;
         this.horasestimadas = horasestimadas;
         this.genero = genero;
@@ -38,11 +38,11 @@ public class VideoJuego implements Entregable{
         this.horasestimadas = horasestimadas;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -56,7 +56,7 @@ public class VideoJuego implements Entregable{
 
     @Override
     public String toString() {
-        return "Serie{" +
+        return "Video Juego{" +
                 "titulo='" + titulo + '\'' +
                 ", horasestimadas=" + horasestimadas +
                 ", entregado=" + entregado +
@@ -82,7 +82,15 @@ public class VideoJuego implements Entregable{
     }
 
     @Override
-    public void compareTo(Object a) {
-
+    public int compareTo(Object a) {
+        int resultado = 0;
+        if(a instanceof VideoJuego){
+            VideoJuego objeto = (VideoJuego) a;
+            resultado= Integer.compare(horasestimadas, objeto.horasestimadas);
+            //-1 objeto es mayor
+            //0 ambos son iguales
+            //1 objeto es menor
+        }
+        return resultado;
     }
 }
